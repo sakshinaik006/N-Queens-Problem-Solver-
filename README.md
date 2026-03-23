@@ -5,6 +5,15 @@ A Java implementation of the N-Queens puzzle using a backtracking algorithm to f
 ## Description
 The N-Queens problem involves placing N queens on an NxN chessboard such that no two queens attack each other. This project explores the efficiency of recursive backtracking by measuring the time taken to find all solutions for different values of N.
 
+## Objectives of the Project 
+
+The primary objectives of this project are: 
+  - To understand and implement the Backtracking algorithm to solve the N-Queens problem in Java. 
+  - To analyze the time and space complexity of the implemented algorithm. 
+  - To demonstrate the solution with working Java code and sample outputs. 
+  - To study the behavior of the algorithm as N scales upward.
+
+    
 ## Features
 * Recursive backtracking algorithm
 * Performance benchmarking for multiple board sizes (N=4 to N=10)
