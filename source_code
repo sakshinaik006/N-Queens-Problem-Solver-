@@ -1,0 +1,71 @@
+import java.util.Arrays;
+
+public class NQueens {
+
+    private static boolean isSafe(int[][] board, int row, int col, int n) {
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 1) return false;
+        }
+
+        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 1) return false;
+        }
+
+        for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+            if (board[i][j] == 1) return false;
+        }
+
+        return true;
+    }
+
+    private static void solve(int[][] board, int row, int n, int[] count) {
+        if (row == n) {
+            count[0]++;
+            if (count[0] <= 3) {
+                printFormattedSolution(board, n, count[0]);
+            }
+            return;
+        }
+
+        for (int col = 0; col < n; col++) {
+            if (isSafe(board, row, col, n)) {
+                board[row][col] = 1;
+                solve(board, row + 1, n, count);
+                board[row][col] = 0;
+            }
+        }
+    }
+
+    private static void printFormattedSolution(int[][] board, int n, int solutionIndex) {
+        System.out.print("  Solution " + solutionIndex + ": [");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 1) {
+                    System.out.print(j + (i < n - 1 ? ", " : ""));
+                    break;
+                }
+            }
+        }
+        System.out.println("]");
+    }
+
+    public static void main(String[] args) {
+        int[] testValues = {4, 5, 6, 8, 10};
+        
+        System.out.println("=== N-Queens Solver Benchmarking ===\n");
+
+        for (int n : testValues) {
+            int[][] board = new int[n][n];
+            int[] count = {0};
+            
+            long startTime = System.nanoTime();
+            solve(board, 0, n, count);
+            long endTime = System.nanoTime();
+            
+            double durationMs = (endTime - startTime) / 1_000_000.0;
+            
+            System.out.println("N = " + n + ": " + count[0] + " solution(s) found");
+            System.out.printf("   Time taken: %.4f ms%n%n", durationMs);
+        }
+    }
+}
