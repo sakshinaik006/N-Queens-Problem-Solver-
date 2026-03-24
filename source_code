@@ -17,7 +17,6 @@ public class NQueens {
 
         return true;
     }
-
     private static void solve(int[][] board, int row, int n, int[] count) {
         if (row == n) {
             count[0]++;
@@ -26,7 +25,6 @@ public class NQueens {
             }
             return;
         }
-
         for (int col = 0; col < n; col++) {
             if (isSafe(board, row, col, n)) {
                 board[row][col] = 1;
