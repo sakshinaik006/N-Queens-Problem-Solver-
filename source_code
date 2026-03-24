@@ -46,12 +46,9 @@ public class NQueens {
         }
         System.out.println("]");
     }
-
     public static void main(String[] args) {
         int[] testValues = {4, 5, 6, 8, 10};
-        
         System.out.println("=== N-Queens Solver Benchmarking ===\n");
-
         for (int n : testValues) {
             int[][] board = new int[n][n];
             int[] count = {0};
